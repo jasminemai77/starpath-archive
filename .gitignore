@@ -1,0 +1,28 @@
+# Python build and test artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local environments and configuration
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.local.json
+
+# Local data and editor files
+*.db
+*.sqlite
+*.sqlite3
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
