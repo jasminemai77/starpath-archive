@@ -19,7 +19,17 @@ def _read_data(path: Path) -> list[dict[str, object]]:
 
 
 def load_stars() -> tuple[Star, ...]:
-    return tuple(Star(**item) for item in _read_data(DATA_DIR / "stars.json"))
+    paths = (DATA_DIR / "stars.json", *sorted((DATA_DIR / "stars").glob("*.json")))
+    stars: list[Star] = []
+    legacy_type_map = {"open_cluster": "cluster", "star_pair": "star"}
+    for path in paths:
+        for item in _read_data(path):
+            raw = dict(item)
+            raw["zh_name"] = raw.pop("zh_name", None) or raw.pop("chinese_name", None)
+            raw["type"] = raw.pop("type", None) or raw.pop("category", None)
+            raw["type"] = legacy_type_map.get(raw["type"], raw["type"])
+            stars.append(Star(**raw))
+    return tuple(stars)
 
 
 def load_tarot_cards() -> tuple[TarotCard, ...]:

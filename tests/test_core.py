@@ -20,16 +20,37 @@ def build_service() -> StarpathService:
     )
 
 
-def test_static_data_is_complete_for_sprint_one() -> None:
+def test_static_data_is_complete_for_sprint_two() -> None:
     stars = load_stars()
     cards = load_tarot_cards()
     quotes = load_quotes()
 
-    assert 10 <= len(stars) <= 20
+    assert len(stars) >= 50
     assert len(cards) == 78
     assert Counter(card.arcana for card in cards) == {"major": 22, "minor": 56}
     assert len(quotes) >= 30
     assert all(star.astronomy and star.symbolism for star in stars)
+
+
+def test_astral_dataset_has_supported_types_required_fields_and_unique_ids() -> None:
+    stars = load_stars()
+    type_counts = Counter(star.type for star in stars)
+
+    assert type_counts == {"star": 27, "cluster": 7, "nebula": 8, "galaxy": 8}
+    assert len({star.id for star in stars}) == len(stars)
+    for star in stars:
+        assert star.id and star.name and star.zh_name
+        assert star.astronomy and star.symbolism
+
+
+def test_star_record_keeps_sprint_one_aliases_while_exposing_new_fields() -> None:
+    record = build_service().generate(
+        user_hash="hash-for-user-a", on_date=date(2026, 8, 20), mode="daily", spread="single"
+    )
+    star = record.as_dict()["star"]
+
+    assert star["zh_name"] == star["chinese_name"]
+    assert star["type"] == star["category"]
 
 
 def test_complete_tarot_dataset_has_each_minor_suit_and_required_fields() -> None:

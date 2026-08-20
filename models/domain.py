@@ -11,10 +11,20 @@ class Star:
 
     id: str
     name: str
-    chinese_name: str
-    category: str
+    zh_name: str
+    type: str
     astronomy: str
     symbolism: str
+
+    @property
+    def chinese_name(self) -> str:
+        """Compatibility alias retained for the Sprint 1 tool result."""
+        return self.zh_name
+
+    @property
+    def category(self) -> str:
+        """Compatibility alias retained for the Sprint 1 tool result."""
+        return self.type
 
 
 @dataclass(frozen=True)
@@ -81,9 +91,12 @@ class StarpathRecord:
     quote: Quote
 
     def as_dict(self) -> dict[str, object]:
+        star = asdict(self.star)
+        star["chinese_name"] = self.star.chinese_name
+        star["category"] = self.star.category
         return {
             "record_id": self.record_id,
-            "star": asdict(self.star),
+            "star": star,
             "tarot": self.tarot.as_dict(),
             "quote": asdict(self.quote),
         }
