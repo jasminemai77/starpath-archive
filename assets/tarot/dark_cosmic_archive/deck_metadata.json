@@ -1,0 +1,57 @@
+{
+  "visual_deck_id": "dark_cosmic_archive",
+  "display_name": "Dark Cosmic Archive",
+  "specification_version": "1.0",
+  "status": "frozen_five_card_visual_baseline",
+  "asset_root": "assets/tarot/dark_cosmic_archive",
+  "card_aspect_ratio": "2:3",
+  "asset_policy": {
+    "formal_assets_directory": "major",
+    "candidate_assets_directory": "candidates",
+    "candidate_history_retained": true,
+    "runtime_image_dependency": false
+  },
+  "approved_major_assets": [
+    {
+      "card_id": "major-00",
+      "number": "0",
+      "name": "The Fool",
+      "zh_name": "愚人",
+      "path": "major/00_the_fool.png",
+      "candidate_source": "candidates/00_the_fool/00_the_fool_v1.png"
+    },
+    {
+      "card_id": "major-01",
+      "number": "I",
+      "name": "The Magician",
+      "zh_name": "魔术师",
+      "path": "major/01_the_magician.png",
+      "candidate_source": "candidates/01_the_magician/01_the_magician_v1.png"
+    },
+    {
+      "card_id": "major-13",
+      "number": "XIII",
+      "name": "Death",
+      "zh_name": "死神",
+      "path": "major/13_death.png",
+      "candidate_source": "candidates/13_death/13_death_v1.png"
+    },
+    {
+      "card_id": "major-17",
+      "number": "XVII",
+      "name": "The Star",
+      "zh_name": "星星",
+      "path": "major/17_the_star.png",
+      "reference_source": "reference/the_star_approved_v1.png"
+    },
+    {
+      "card_id": "major-18",
+      "number": "XVIII",
+      "name": "The Moon",
+      "zh_name": "月亮",
+      "path": "major/18_the_moon.png",
+      "candidate_source": "candidates/18_the_moon/18_the_moon_v1.png"
+    }
+  ],
+  "next_generation_template": "major_arcana_generation_template.md"
+}

@@ -4,6 +4,9 @@
 
 - **Visual Deck ID:** `dark_cosmic_archive`
 - **Display name:** Dark Cosmic Archive
+- **Specification version:** `1.0`
+- **Status:** frozen five-card visual baseline; further Major Arcana work must
+  use this specification as its visual contract.
 - **Scope:** the first complete 78-card visual theme for Starpath Archive. It
   is a deck-wide art direction, not a card back. This Sprint does not implement
   deck selection, switching, or additional visual themes.
@@ -69,7 +72,23 @@ Apply these to all future cards, including any future revision of The Star:
 - Seed, model identifier, resolution controls, and raw generation settings were
   not exposed by the generation system and are therefore unavailable.
 - The approved image is preserved unchanged; no substitute image was generated
-  during assetization.
+during assetization.
+
+## Frozen five-card baseline
+
+The following assets are human-approved and establish the first deck-level
+consistency baseline:
+
+| Card | Formal asset |
+| --- | --- |
+| 0 — The Fool / 愚人 | `major/00_the_fool.png` |
+| I — The Magician / 魔术师 | `major/01_the_magician.png` |
+| XIII — Death / 死神 | `major/13_death.png` |
+| XVII — The Star / 星星 | `major/17_the_star.png` |
+| XVIII — The Moon / 月亮 | `major/18_the_moon.png` |
+
+Candidate history remains in `candidates/`; promotion to `major/` is a copy,
+not a move. Do not replace the approved The Star visual master.
 
 ## Asset boundary
 
