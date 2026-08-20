@@ -4,6 +4,20 @@ Starpath Archive 是一个面向 AstrBot Native Agent 的娱乐互动占卜插�
 
 > 本项目仅提供文化象征与娱乐体验，不预测未来、不作人生决策、不分析用户心理或画像。
 
+## Sprint 2B-2 — v0.3.1-alpha
+
+已完成：
+
+- Tool Experience Contract：`generate_starpath_record` 现在返回完整可验证的
+  结构化协议。
+- 顶层字段：`record_id`、`generated_at`、`mode`、`spread`、`star`、`tarot`、
+  `quote`、`metadata`。
+- `experience/` 仅组织机器可读体验元数据；不生成最终聊天文案。
+- 增加 AstrBot API-stub 集成模拟和本地真实环境测试说明。
+
+运行集成步骤见 [docs/runtime-test.md](docs/runtime-test.md)。当前仓库未执行
+真实 QQ 平台测试。
+
 ## Sprint 2B-1 — v0.3.0-alpha
 
 已完成：
@@ -69,9 +83,13 @@ Starpath Archive 是一个面向 AstrBot Native Agent 的娱乐互动占卜插�
 ```json
 {
   "record_id": "starpath-...",
+  "generated_at": "2026-08-20T09:30:00Z",
+  "mode": "daily",
+  "spread": "single",
   "star": {},
   "tarot": {},
-  "quote": {}
+  "quote": {},
+  "metadata": {}
 }
 ```
 
