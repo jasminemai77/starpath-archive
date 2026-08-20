@@ -1,7 +1,7 @@
 name: starpath_plugin
 display_name: Starpath Archive
 desc: Entertainment-focused celestial and tarot symbolic record tool for AstrBot Native Agent.
-version: v0.1.0
+version: v0.3.1-alpha
 author: AstrBot Project
 repo: NONE
 astrbot_version: ">=4.27.2"

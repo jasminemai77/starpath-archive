@@ -24,7 +24,7 @@ def build_service() -> StarpathService:
     "starpath_plugin",
     "AstrBot Project",
     "Entertainment-focused symbolic celestial and tarot archive for Native Agent use.",
-    "0.1.0",
+    "0.3.1-alpha",
     "",
 )
 class StarpathArchivePlugin(Star):
