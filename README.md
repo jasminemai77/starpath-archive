@@ -4,6 +4,25 @@ Starpath Archive 是一个面向 AstrBot Native Agent 的娱乐互动占卜插�
 
 > 本项目仅提供文化象征与娱乐体验，不预测未来、不作人生决策、不分析用户心理或画像。
 
+## Sprint 2A — v0.2.0-alpha
+
+已完成：
+
+- 完整 Rider–Waite–Smith 对应牌组：22 张大阿尔卡那、56 张小阿尔卡那。
+- 四花色静态数据：权杖、圣杯、宝剑、星币各 14 张。
+- 小阿卡纳独立保存传统正／逆位含义、关键词、元素象征与文学化图像素材。
+- 数据校验覆盖总数、花色分布、必填字段及唯一 ID。
+
+已知限制：
+
+- 牌义为精简的文化参考线索，不替代完整的塔罗历史或牌义研究。
+- 不包含塔罗图片、历史/收藏、主动推送、定时任务或多消息仪式流程。
+
+下一阶段：
+
+1. 扩充真实天体数据并引入静态数据来源审阅流程。
+2. 增加面向 AstrBot 实际运行环境的集成验证。
+
 ## Sprint 1 — v0.1.0-alpha
 
 已完成：
@@ -13,16 +32,6 @@ Starpath Archive 是一个面向 AstrBot Native Agent 的娱乐互动占卜插�
 - 星辰箴言：随机抽取星空主题文本。
 - `generate_starpath_record` Native Tool：返回 JSON，不发送消息、不生成最终聊天回复。
 - 静态数据：15 个真实天体、22 张大阿尔卡那、30 条箴言。
-
-已知限制：
-
-- 当前仅包含大阿尔卡那；完整 78 张牌组将在后续 Sprint 补齐。
-- 不包含塔罗图片、历史/收藏、主动推送、定时任务或多消息仪式流程。
-
-下一阶段：
-
-1. 添加 56 张小阿尔卡那及完整牌组数据校验。
-2. 增加面向 AstrBot 实际运行环境的集成验证。
 
 ## 安装
 
@@ -51,6 +60,13 @@ Starpath Archive 是一个面向 AstrBot Native Agent 的娱乐互动占卜插�
 python -m pytest -q
 python -m ruff check .
 ```
+
+## 数据参考
+
+牌组结构采用 Rider–Waite–Smith 的 78 张牌配置：22 张大阿尔卡那与四个各
+14 张的小阿尔卡那花色。[Rider–Waite Tarot 概览](https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot)
+与 [Labyrinthos 的花色说明](https://labyrinthos.co/pages/how-to-read-tarot-cards)
+用于结构与花色传统的交叉核对；本项目数据保持精简、非预测的文化参考表述。
 
 ## 许可证
 
