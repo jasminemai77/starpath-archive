@@ -4,6 +4,19 @@ Starpath Archive 是一个面向 AstrBot Native Agent 的娱乐互动占卜插�
 
 > 本项目仅提供文化象征与娱乐体验，不预测未来、不作人生决策、不分析用户心理或画像。
 
+## Sprint 2C — visual prototype phase
+
+已完成：
+
+- 已人工审核的 The Star 样卡已归档为首套视觉卡套
+  `dark_cosmic_archive` 的正式视觉母版。
+- 资产包含 reference 副本、正式 `major/17_the_star.png` 与固定视觉规范。
+- 已准备 The Star、The Fool、The Magician、Death、The Moon 的五张一致性验证
+  计划；本轮不量产或生成新的正式卡牌。
+
+视觉规范见
+[`assets/tarot/dark_cosmic_archive/visual_spec.md`](assets/tarot/dark_cosmic_archive/visual_spec.md)。
+
 ## Sprint 2B-2 — v0.3.1-alpha
 
 已完成：
