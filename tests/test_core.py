@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from datetime import date
 
 import pytest
@@ -25,10 +26,31 @@ def test_static_data_is_complete_for_sprint_one() -> None:
     quotes = load_quotes()
 
     assert 10 <= len(stars) <= 20
-    assert len(cards) >= 22
-    assert {card.arcana for card in cards} == {"major"}
+    assert len(cards) == 78
+    assert Counter(card.arcana for card in cards) == {"major": 22, "minor": 56}
     assert len(quotes) >= 30
     assert all(star.astronomy and star.symbolism for star in stars)
+
+
+def test_complete_tarot_dataset_has_each_minor_suit_and_required_fields() -> None:
+    cards = load_tarot_cards()
+    suit_counts = Counter(card.suit for card in cards if card.arcana == "minor")
+
+    assert suit_counts == {"wands": 14, "cups": 14, "swords": 14, "pentacles": 14}
+    assert len({card.id for card in cards}) == 78
+    for card in cards:
+        assert card.id and card.name and card.zh_name
+        assert card.keywords and card.upright_meaning and card.reversed_meaning
+    assert all(
+        card.symbolism and card.literary_material for card in cards if card.arcana == "minor"
+    )
+
+
+def test_tarot_draw_keeps_the_sprint_one_chinese_name_alias() -> None:
+    draw = TarotEngine(load_tarot_cards()).draw().as_dict()
+
+    assert draw["zh_name"] == draw["chinese_name"]
+    assert isinstance(draw["meaning"], list)
 
 
 def test_same_user_and_day_always_selects_the_same_star() -> None:

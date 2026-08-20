@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 
 
 @dataclass(frozen=True)
@@ -23,13 +23,21 @@ class TarotCard:
 
     id: str
     name: str
-    chinese_name: str
+    zh_name: str
     number: int | str
     arcana: str
+    suit: str | None
     keywords: tuple[str, ...]
-    upright_meaning: str
-    reversed_meaning: str
+    upright_meaning: tuple[str, ...]
+    reversed_meaning: tuple[str, ...]
+    symbolism: dict[str, str] = field(default_factory=dict)
+    literary_material: tuple[str, ...] = ()
     image: str | None = None
+
+    @property
+    def chinese_name(self) -> str:
+        """Compatibility alias retained for Sprint 1 consumers."""
+        return self.zh_name
 
 
 @dataclass(frozen=True)
@@ -39,16 +47,20 @@ class TarotDraw:
     card: TarotCard
     orientation: str
     keywords: tuple[str, ...]
-    meaning: str
+    meaning: tuple[str, ...]
 
     def as_dict(self) -> dict[str, object]:
         card = asdict(self.card)
         card["keywords"] = list(self.card.keywords)
+        card["upright_meaning"] = list(self.card.upright_meaning)
+        card["reversed_meaning"] = list(self.card.reversed_meaning)
+        card["literary_material"] = list(self.card.literary_material)
+        card["chinese_name"] = self.card.chinese_name
         return {
             **card,
             "orientation": self.orientation,
             "draw_keywords": list(self.keywords),
-            "meaning": self.meaning,
+            "meaning": list(self.meaning),
         }
 
 

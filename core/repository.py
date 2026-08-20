@@ -10,24 +10,44 @@ from ..models import Quote, Star, TarotCard
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 
 
-def _read_data(filename: str) -> list[dict[str, object]]:
-    with (DATA_DIR / filename).open(encoding="utf-8") as source:
+def _read_data(path: Path) -> list[dict[str, object]]:
+    with path.open(encoding="utf-8") as source:
         value = json.load(source)
     if not isinstance(value, list) or not value:
-        raise ValueError(f"{filename} must contain a non-empty JSON array")
+        raise ValueError(f"{path.name} must contain a non-empty JSON array")
     return value
 
 
 def load_stars() -> tuple[Star, ...]:
-    return tuple(Star(**item) for item in _read_data("stars.json"))
+    return tuple(Star(**item) for item in _read_data(DATA_DIR / "stars.json"))
 
 
 def load_tarot_cards() -> tuple[TarotCard, ...]:
-    return tuple(
-        TarotCard(**{**item, "keywords": tuple(item["keywords"])})
-        for item in _read_data("tarot.json")
-    )
+    paths = (DATA_DIR / "tarot.json", *sorted((DATA_DIR / "tarot").glob("*.json")))
+    cards: list[TarotCard] = []
+    for path in paths:
+        for item in _read_data(path):
+            raw = dict(item)
+            raw["zh_name"] = raw.pop("zh_name", raw.pop("chinese_name", None))
+            raw.setdefault("suit", None)
+            raw.setdefault("symbolism", {})
+            raw.setdefault("literary_material", ())
+            raw["keywords"] = tuple(raw["keywords"])
+            raw["upright_meaning"] = _meaning_tuple(raw["upright_meaning"])
+            raw["reversed_meaning"] = _meaning_tuple(raw["reversed_meaning"])
+            raw["literary_material"] = tuple(raw["literary_material"])
+            cards.append(TarotCard(**raw))
+    return tuple(cards)
+
+
+def _meaning_tuple(value: object) -> tuple[str, ...]:
+    """Accept Sprint 1 strings while normalizing Sprint 2 meaning lists."""
+    if isinstance(value, str):
+        return (value,)
+    if isinstance(value, list) and all(isinstance(item, str) for item in value):
+        return tuple(value)
+    raise ValueError("tarot meanings must be a string or a list of strings")
 
 
 def load_quotes() -> tuple[Quote, ...]:
-    return tuple(Quote(**item) for item in _read_data("quotes.json"))
+    return tuple(Quote(**item) for item in _read_data(DATA_DIR / "quotes.json"))
