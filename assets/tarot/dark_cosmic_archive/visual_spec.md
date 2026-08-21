@@ -5,8 +5,9 @@
 - **Visual Deck ID:** `dark_cosmic_archive`
 - **Display name:** Dark Cosmic Archive
 - **Specification version:** `1.0`
-- **Status:** frozen five-card visual baseline; further Major Arcana work must
-  use this specification as its visual contract.
+- **Status:** frozen v1.0 visual contract; all 22 Major Arcana assets are
+  human-approved and further visual work must use this specification as its
+  visual contract.
 - **Scope:** the first complete 78-card visual theme for Starpath Archive. It
   is a deck-wide art direction, not a card back. This Sprint does not implement
   deck selection, switching, or additional visual themes.
@@ -118,6 +119,9 @@ consistency baseline:
 | XVI — The Tower / 高塔 | `major/16_tower.png` |
 | XVII — The Star / 星星 | `major/17_the_star.png` |
 | XVIII — The Moon / 月亮 | `major/18_the_moon.png` |
+| XIX — The Sun / 太阳 | `major/19_sun.png` |
+| XX — Judgement / 审判 | `major/20_judgement.png` |
+| XXI — The World / 世界 | `major/21_world.png` |
 
 Candidate history remains in `candidates/`; promotion to `major/` is a copy,
 not a move. Do not replace the approved The Star visual master.

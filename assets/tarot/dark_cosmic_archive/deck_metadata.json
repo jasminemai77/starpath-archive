@@ -2,7 +2,7 @@
   "visual_deck_id": "dark_cosmic_archive",
   "display_name": "Dark Cosmic Archive",
   "specification_version": "1.0",
-  "status": "frozen_five_card_visual_baseline",
+  "status": "approved_full_major_arcana",
   "asset_root": "assets/tarot/dark_cosmic_archive",
   "card_aspect_ratio": "2:3",
   "asset_policy": {
@@ -163,6 +163,30 @@
       "zh_name": "月亮",
       "path": "major/18_the_moon.png",
       "candidate_source": "candidates/18_the_moon/18_the_moon_v1.png"
+    },
+    {
+      "card_id": "major-19",
+      "number": "XIX",
+      "name": "The Sun",
+      "zh_name": "太阳",
+      "path": "major/19_sun.png",
+      "candidate_source": "candidates/final_batch/19_sun/19_sun_v1.png"
+    },
+    {
+      "card_id": "major-20",
+      "number": "XX",
+      "name": "Judgement",
+      "zh_name": "审判",
+      "path": "major/20_judgement.png",
+      "candidate_source": "candidates/final_batch/20_judgement/20_judgement_v1.png"
+    },
+    {
+      "card_id": "major-21",
+      "number": "XXI",
+      "name": "The World",
+      "zh_name": "世界",
+      "path": "major/21_world.png",
+      "candidate_source": "candidates/final_batch/21_world/21_world_v1.png"
     }
   ],
   "next_generation_template": "major_arcana_generation_template.md"
