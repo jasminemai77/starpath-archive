@@ -610,6 +610,48 @@
       "zh_name": "宝剑国王",
       "path": "minor/swords/swords_king.png",
       "candidate_source": "candidates/minor_batch_swords/swords_king/card.png"
+    },
+    {
+      "card_id": "pentacles_01_ace", "asset_key": "pentacles_01_ace", "suit": "pentacles", "rank": "ace", "name": "Ace of Pentacles", "zh_name": "星币一", "path": "minor/pentacles/pentacles_01_ace.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_01_ace/card.png"
+    },
+    {
+      "card_id": "pentacles_02_two", "asset_key": "pentacles_02_two", "suit": "pentacles", "rank": "two", "name": "Two of Pentacles", "zh_name": "星币二", "path": "minor/pentacles/pentacles_02_two.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_02_two/card.png"
+    },
+    {
+      "card_id": "pentacles_03_three", "asset_key": "pentacles_03_three", "suit": "pentacles", "rank": "three", "name": "Three of Pentacles", "zh_name": "星币三", "path": "minor/pentacles/pentacles_03_three.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_03_three/card.png"
+    },
+    {
+      "card_id": "pentacles_04_four", "asset_key": "pentacles_04_four", "suit": "pentacles", "rank": "four", "name": "Four of Pentacles", "zh_name": "星币四", "path": "minor/pentacles/pentacles_04_four.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_04_four/card.png"
+    },
+    {
+      "card_id": "pentacles_05_five", "asset_key": "pentacles_05_five", "suit": "pentacles", "rank": "five", "name": "Five of Pentacles", "zh_name": "星币五", "path": "minor/pentacles/pentacles_05_five.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_05_five/card.png"
+    },
+    {
+      "card_id": "pentacles_06_six", "asset_key": "pentacles_06_six", "suit": "pentacles", "rank": "six", "name": "Six of Pentacles", "zh_name": "星币六", "path": "minor/pentacles/pentacles_06_six.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_06_six/card.png"
+    },
+    {
+      "card_id": "pentacles_07_seven", "asset_key": "pentacles_07_seven", "suit": "pentacles", "rank": "seven", "name": "Seven of Pentacles", "zh_name": "星币七", "path": "minor/pentacles/pentacles_07_seven.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_07_seven/card.png"
+    },
+    {
+      "card_id": "pentacles_08_eight", "asset_key": "pentacles_08_eight", "suit": "pentacles", "rank": "eight", "name": "Eight of Pentacles", "zh_name": "星币八", "path": "minor/pentacles/pentacles_08_eight.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_08_eight/card.png"
+    },
+    {
+      "card_id": "pentacles_09_nine", "asset_key": "pentacles_09_nine", "suit": "pentacles", "rank": "nine", "name": "Nine of Pentacles", "zh_name": "星币九", "path": "minor/pentacles/pentacles_09_nine.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_09_nine/card.png"
+    },
+    {
+      "card_id": "pentacles_10_ten", "asset_key": "pentacles_10_ten", "suit": "pentacles", "rank": "ten", "name": "Ten of Pentacles", "zh_name": "星币十", "path": "minor/pentacles/pentacles_10_ten.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_10_ten/card.png"
+    },
+    {
+      "card_id": "pentacles_page", "asset_key": "pentacles_page", "suit": "pentacles", "rank": "page", "name": "Page of Pentacles", "zh_name": "星币侍从", "path": "minor/pentacles/pentacles_page.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_page/card.png"
+    },
+    {
+      "card_id": "pentacles_knight", "asset_key": "pentacles_knight", "suit": "pentacles", "rank": "knight", "name": "Knight of Pentacles", "zh_name": "星币骑士", "path": "minor/pentacles/pentacles_knight.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_knight/card.png"
+    },
+    {
+      "card_id": "pentacles_queen", "asset_key": "pentacles_queen", "suit": "pentacles", "rank": "queen", "name": "Queen of Pentacles", "zh_name": "星币王后", "path": "minor/pentacles/pentacles_queen.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_queen/card.png"
+    },
+    {
+      "card_id": "pentacles_king", "asset_key": "pentacles_king", "suit": "pentacles", "rank": "king", "name": "King of Pentacles", "zh_name": "星币国王", "path": "minor/pentacles/pentacles_king.png", "candidate_source": "candidates/minor_batch_pentacles/pentacles_king/card.png"
     }
   ],
   "next_generation_template": "major_arcana_generation_template.md"
