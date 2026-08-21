@@ -106,6 +106,7 @@ consistency baseline:
 | IV — The Emperor / 皇帝 | `major/04_emperor.png` |
 | V — The Hierophant / 教皇 | `major/05_hierophant.png` |
 | VI — The Lovers / 恋人 | `major/06_lovers.png` |
+| X — Wheel of Fortune / 命运之轮 | `major/10_wheel_of_fortune.png` |
 | XIII — Death / 死神 | `major/13_death.png` |
 | XVII — The Star / 星星 | `major/17_the_star.png` |
 | XVIII — The Moon / 月亮 | `major/18_the_moon.png` |

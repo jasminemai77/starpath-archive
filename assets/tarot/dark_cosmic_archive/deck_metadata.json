@@ -69,6 +69,14 @@
       "candidate_source": "candidates/batch_01/06_lovers/06_lovers_v1.png"
     },
     {
+      "card_id": "major-10",
+      "number": "X",
+      "name": "Wheel of Fortune",
+      "zh_name": "命运之轮",
+      "path": "major/10_wheel_of_fortune.png",
+      "candidate_source": "candidates/batch_02/10_wheel_of_fortune/10_wheel_of_fortune_v2.png"
+    },
+    {
       "card_id": "major-13",
       "number": "XIII",
       "name": "Death",
