@@ -125,6 +125,30 @@
       "candidate_source": "candidates/13_death/13_death_v1.png"
     },
     {
+      "card_id": "major-14",
+      "number": "XIV",
+      "name": "The Temperance",
+      "zh_name": "节制",
+      "path": "major/14_temperance.png",
+      "candidate_source": "candidates/batch_03/14_temperance/14_temperance_v1.png"
+    },
+    {
+      "card_id": "major-15",
+      "number": "XV",
+      "name": "The Devil",
+      "zh_name": "恶魔",
+      "path": "major/15_devil.png",
+      "candidate_source": "candidates/batch_03/15_devil/15_devil_v3.png"
+    },
+    {
+      "card_id": "major-16",
+      "number": "XVI",
+      "name": "The Tower",
+      "zh_name": "高塔",
+      "path": "major/16_tower.png",
+      "candidate_source": "candidates/batch_03/16_tower/16_tower_v1.png"
+    },
+    {
       "card_id": "major-17",
       "number": "XVII",
       "name": "The Star",

@@ -113,6 +113,9 @@ consistency baseline:
 | XI — Justice / 正义 | `major/11_justice.png` |
 | XII — The Hanged Man / 倒吊人 | `major/12_hanged_man.png` |
 | XIII — Death / 死神 | `major/13_death.png` |
+| XIV — The Temperance / 节制 | `major/14_temperance.png` |
+| XV — The Devil / 恶魔 | `major/15_devil.png` |
+| XVI — The Tower / 高塔 | `major/16_tower.png` |
 | XVII — The Star / 星星 | `major/17_the_star.png` |
 | XVIII — The Moon / 月亮 | `major/18_the_moon.png` |
 
