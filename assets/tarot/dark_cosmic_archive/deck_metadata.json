@@ -470,6 +470,146 @@
       "zh_name": "圣杯国王",
       "path": "minor/cups/cups_king.png",
       "candidate_source": "candidates/minor_batch_cups/cups_king/card.png"
+    },
+    {
+      "card_id": "swords_01_ace",
+      "asset_key": "swords_01_ace",
+      "suit": "swords",
+      "rank": "ace",
+      "name": "Ace of Swords",
+      "zh_name": "宝剑一",
+      "path": "minor/swords/swords_01_ace.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_01_ace/card.png"
+    },
+    {
+      "card_id": "swords_02_two",
+      "asset_key": "swords_02_two",
+      "suit": "swords",
+      "rank": "two",
+      "name": "Two of Swords",
+      "zh_name": "宝剑二",
+      "path": "minor/swords/swords_02_two.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_02_two/card.png"
+    },
+    {
+      "card_id": "swords_03_three",
+      "asset_key": "swords_03_three",
+      "suit": "swords",
+      "rank": "three",
+      "name": "Three of Swords",
+      "zh_name": "宝剑三",
+      "path": "minor/swords/swords_03_three.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_03_three/card.png"
+    },
+    {
+      "card_id": "swords_04_four",
+      "asset_key": "swords_04_four",
+      "suit": "swords",
+      "rank": "four",
+      "name": "Four of Swords",
+      "zh_name": "宝剑四",
+      "path": "minor/swords/swords_04_four.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_04_four/card.png"
+    },
+    {
+      "card_id": "swords_05_five",
+      "asset_key": "swords_05_five",
+      "suit": "swords",
+      "rank": "five",
+      "name": "Five of Swords",
+      "zh_name": "宝剑五",
+      "path": "minor/swords/swords_05_five.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_05_five/card.png"
+    },
+    {
+      "card_id": "swords_06_six",
+      "asset_key": "swords_06_six",
+      "suit": "swords",
+      "rank": "six",
+      "name": "Six of Swords",
+      "zh_name": "宝剑六",
+      "path": "minor/swords/swords_06_six.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_06_six/card.png"
+    },
+    {
+      "card_id": "swords_07_seven",
+      "asset_key": "swords_07_seven",
+      "suit": "swords",
+      "rank": "seven",
+      "name": "Seven of Swords",
+      "zh_name": "宝剑七",
+      "path": "minor/swords/swords_07_seven.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_07_seven/card.png"
+    },
+    {
+      "card_id": "swords_08_eight",
+      "asset_key": "swords_08_eight",
+      "suit": "swords",
+      "rank": "eight",
+      "name": "Eight of Swords",
+      "zh_name": "宝剑八",
+      "path": "minor/swords/swords_08_eight.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_08_eight/card.png"
+    },
+    {
+      "card_id": "swords_09_nine",
+      "asset_key": "swords_09_nine",
+      "suit": "swords",
+      "rank": "nine",
+      "name": "Nine of Swords",
+      "zh_name": "宝剑九",
+      "path": "minor/swords/swords_09_nine.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_09_nine/card.png"
+    },
+    {
+      "card_id": "swords_10_ten",
+      "asset_key": "swords_10_ten",
+      "suit": "swords",
+      "rank": "ten",
+      "name": "Ten of Swords",
+      "zh_name": "宝剑十",
+      "path": "minor/swords/swords_10_ten.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_10_ten/card.png"
+    },
+    {
+      "card_id": "swords_page",
+      "asset_key": "swords_page",
+      "suit": "swords",
+      "rank": "page",
+      "name": "Page of Swords",
+      "zh_name": "宝剑侍从",
+      "path": "minor/swords/swords_page.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_page/card.png"
+    },
+    {
+      "card_id": "swords_knight",
+      "asset_key": "swords_knight",
+      "suit": "swords",
+      "rank": "knight",
+      "name": "Knight of Swords",
+      "zh_name": "宝剑骑士",
+      "path": "minor/swords/swords_knight.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_knight/card.png"
+    },
+    {
+      "card_id": "swords_queen",
+      "asset_key": "swords_queen",
+      "suit": "swords",
+      "rank": "queen",
+      "name": "Queen of Swords",
+      "zh_name": "宝剑王后",
+      "path": "minor/swords/swords_queen.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_queen/card.png"
+    },
+    {
+      "card_id": "swords_king",
+      "asset_key": "swords_king",
+      "suit": "swords",
+      "rank": "king",
+      "name": "King of Swords",
+      "zh_name": "宝剑国王",
+      "path": "minor/swords/swords_king.png",
+      "candidate_source": "candidates/minor_batch_swords/swords_king/card.png"
     }
   ],
   "next_generation_template": "major_arcana_generation_template.md"
