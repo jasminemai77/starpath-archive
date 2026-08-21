@@ -69,12 +69,52 @@
       "candidate_source": "candidates/batch_01/06_lovers/06_lovers_v1.png"
     },
     {
+      "card_id": "major-07",
+      "number": "VII",
+      "name": "The Chariot",
+      "zh_name": "战车",
+      "path": "major/07_chariot.png",
+      "candidate_source": "candidates/batch_02/07_chariot/07_chariot_v1.png"
+    },
+    {
+      "card_id": "major-08",
+      "number": "VIII",
+      "name": "Strength",
+      "zh_name": "力量",
+      "path": "major/08_strength.png",
+      "candidate_source": "candidates/batch_02/08_strength/08_strength_v1.png"
+    },
+    {
+      "card_id": "major-09",
+      "number": "IX",
+      "name": "The Hermit",
+      "zh_name": "隐士",
+      "path": "major/09_hermit.png",
+      "candidate_source": "candidates/batch_02/09_hermit/09_hermit_v1.png"
+    },
+    {
       "card_id": "major-10",
       "number": "X",
       "name": "Wheel of Fortune",
       "zh_name": "命运之轮",
       "path": "major/10_wheel_of_fortune.png",
       "candidate_source": "candidates/batch_02/10_wheel_of_fortune/10_wheel_of_fortune_v2.png"
+    },
+    {
+      "card_id": "major-11",
+      "number": "XI",
+      "name": "Justice",
+      "zh_name": "正义",
+      "path": "major/11_justice.png",
+      "candidate_source": "candidates/batch_02/11_justice/11_justice_v1.png"
+    },
+    {
+      "card_id": "major-12",
+      "number": "XII",
+      "name": "The Hanged Man",
+      "zh_name": "倒吊人",
+      "path": "major/12_hanged_man.png",
+      "candidate_source": "candidates/batch_02/12_hanged_man/12_hanged_man_v1.png"
     },
     {
       "card_id": "major-13",
