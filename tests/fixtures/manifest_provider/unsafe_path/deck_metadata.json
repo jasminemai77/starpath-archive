@@ -1,0 +1,13 @@
+{
+  "visual_deck_id": "unsafe_path",
+  "display_name": "Unsafe Path",
+  "specification_version": "1.0",
+  "status": "approved",
+  "approved_major_assets": [
+    {
+      "card_id": "major-00",
+      "path": "../../config.json"
+    }
+  ],
+  "approved_minor_assets": []
+}
