@@ -32,6 +32,29 @@ cyberpunk, anime, generic game UI, or a busy fantasy poster.
 | Fixed whitespace | Preserve the top numeral zone and a consistent bottom title zone; do not crowd the border |
 | Main composition | One clear symbolic subject, a calm readable silhouette, and controlled celestial depth |
 
+### Color System
+
+Deep space navy is the dominant field, supported by low-saturation nebula
+violet. Aged antique gold is reserved for structural linework, celestial
+highlights, and restrained focal accents; ivory white provides readable
+typography and high-value starlight. Individual card symbolism may alter the
+balance of these colors, but must not replace the deck's dark cosmic base with
+an oversaturated or flat color field.
+
+### Border System
+
+Every card retains the restrained antique-gold double-line archive frame with
+sparse star-map and orbit accents. The border establishes a stable visual
+weight, leaves the title zones clear, and remains subordinate to the card's
+central symbolic subject.
+
+### Typography Rule
+
+Use a centered Roman numeral in the dedicated top zone, then a centered
+uppercase English title and Chinese title in the fixed bottom zone. Preserve
+the deck-wide serif hierarchy, tracking, contrast, and whitespace; never add
+descriptive copy to a card face.
+
 ### Long Title Typography Rule
 
 All English card titles use the same uppercase serif family, centered placement,
@@ -49,6 +72,22 @@ symbolism, but the variation must remain subordinate to the border: retain
 clear corners, preserve the approximately 10–15% reduced decoration density,
 and avoid adding ornamental clusters on every side. The result should read as
 one archival card system rather than five identical frames or unrelated frames.
+
+### Lighting Rule
+
+Use one coherent ancient celestial illumination per card: a calm, readable
+focal light supported by subtle antique-gold highlights against deep-space
+shadow. Light may become stronger for card-specific events, but must remain
+painterly and archival rather than neon, UI-like, photographic, or theatrical
+poster lighting.
+
+### Asset Generation Rule
+
+New visuals are produced as versioned candidate files under `candidates/`,
+with prompt, negative prompt, reference, timestamp, resolution, and any exposed
+model or seed data recorded in `metadata.md`. Human approval promotes an
+unchanged copy to `major/`; candidate history is retained. Images remain static
+assets only and introduce no runtime image generation or model dependency.
 
 ## The Star — visual master
 
@@ -93,7 +132,7 @@ Apply these to all future cards, including any future revision of The Star:
 - The approved image is preserved unchanged; no substitute image was generated
 during assetization.
 
-## Frozen five-card baseline
+## Approved Major Arcana baseline
 
 The following assets are human-approved and establish the first deck-level
 consistency baseline:
