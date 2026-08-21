@@ -330,6 +330,146 @@
       "zh_name": "权杖国王",
       "path": "minor/wands/wands_king.png",
       "candidate_source": "candidates/minor_batch_wands/wands_king/card.png"
+    },
+    {
+      "card_id": "cups_01_ace",
+      "asset_key": "cups_01_ace",
+      "suit": "cups",
+      "rank": "ace",
+      "name": "Ace of Cups",
+      "zh_name": "圣杯一",
+      "path": "minor/cups/cups_01_ace.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_01_ace/card.png"
+    },
+    {
+      "card_id": "cups_02_two",
+      "asset_key": "cups_02_two",
+      "suit": "cups",
+      "rank": "two",
+      "name": "Two of Cups",
+      "zh_name": "圣杯二",
+      "path": "minor/cups/cups_02_two.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_02_two/card.png"
+    },
+    {
+      "card_id": "cups_03_three",
+      "asset_key": "cups_03_three",
+      "suit": "cups",
+      "rank": "three",
+      "name": "Three of Cups",
+      "zh_name": "圣杯三",
+      "path": "minor/cups/cups_03_three.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_03_three/card.png"
+    },
+    {
+      "card_id": "cups_04_four",
+      "asset_key": "cups_04_four",
+      "suit": "cups",
+      "rank": "four",
+      "name": "Four of Cups",
+      "zh_name": "圣杯四",
+      "path": "minor/cups/cups_04_four.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_04_four/card.png"
+    },
+    {
+      "card_id": "cups_05_five",
+      "asset_key": "cups_05_five",
+      "suit": "cups",
+      "rank": "five",
+      "name": "Five of Cups",
+      "zh_name": "圣杯五",
+      "path": "minor/cups/cups_05_five.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_05_five/card.png"
+    },
+    {
+      "card_id": "cups_06_six",
+      "asset_key": "cups_06_six",
+      "suit": "cups",
+      "rank": "six",
+      "name": "Six of Cups",
+      "zh_name": "圣杯六",
+      "path": "minor/cups/cups_06_six.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_06_six/card.png"
+    },
+    {
+      "card_id": "cups_07_seven",
+      "asset_key": "cups_07_seven",
+      "suit": "cups",
+      "rank": "seven",
+      "name": "Seven of Cups",
+      "zh_name": "圣杯七",
+      "path": "minor/cups/cups_07_seven.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_07_seven/card.png"
+    },
+    {
+      "card_id": "cups_08_eight",
+      "asset_key": "cups_08_eight",
+      "suit": "cups",
+      "rank": "eight",
+      "name": "Eight of Cups",
+      "zh_name": "圣杯八",
+      "path": "minor/cups/cups_08_eight.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_08_eight/card.png"
+    },
+    {
+      "card_id": "cups_09_nine",
+      "asset_key": "cups_09_nine",
+      "suit": "cups",
+      "rank": "nine",
+      "name": "Nine of Cups",
+      "zh_name": "圣杯九",
+      "path": "minor/cups/cups_09_nine.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_09_nine/card.png"
+    },
+    {
+      "card_id": "cups_10_ten",
+      "asset_key": "cups_10_ten",
+      "suit": "cups",
+      "rank": "ten",
+      "name": "Ten of Cups",
+      "zh_name": "圣杯十",
+      "path": "minor/cups/cups_10_ten.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_10_ten/card.png"
+    },
+    {
+      "card_id": "cups_page",
+      "asset_key": "cups_page",
+      "suit": "cups",
+      "rank": "page",
+      "name": "Page of Cups",
+      "zh_name": "圣杯侍从",
+      "path": "minor/cups/cups_page.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_page/card.png"
+    },
+    {
+      "card_id": "cups_knight",
+      "asset_key": "cups_knight",
+      "suit": "cups",
+      "rank": "knight",
+      "name": "Knight of Cups",
+      "zh_name": "圣杯骑士",
+      "path": "minor/cups/cups_knight.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_knight/card.png"
+    },
+    {
+      "card_id": "cups_queen",
+      "asset_key": "cups_queen",
+      "suit": "cups",
+      "rank": "queen",
+      "name": "Queen of Cups",
+      "zh_name": "圣杯王后",
+      "path": "minor/cups/cups_queen.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_queen/card.png"
+    },
+    {
+      "card_id": "cups_king",
+      "asset_key": "cups_king",
+      "suit": "cups",
+      "rank": "king",
+      "name": "King of Cups",
+      "zh_name": "圣杯国王",
+      "path": "minor/cups/cups_king.png",
+      "candidate_source": "candidates/minor_batch_cups/cups_king/card.png"
     }
   ],
   "next_generation_template": "major_arcana_generation_template.md"
