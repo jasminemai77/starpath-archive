@@ -7,6 +7,7 @@
   "card_aspect_ratio": "2:3",
   "asset_policy": {
     "formal_assets_directory": "major",
+    "minor_formal_assets_directory": "minor",
     "candidate_assets_directory": "candidates",
     "candidate_history_retained": true,
     "runtime_image_dependency": false
@@ -187,6 +188,148 @@
       "zh_name": "世界",
       "path": "major/21_world.png",
       "candidate_source": "candidates/final_batch/21_world/21_world_v1.png"
+    }
+  ],
+  "approved_minor_assets": [
+    {
+      "card_id": "wands_01_ace",
+      "asset_key": "wands_01_ace",
+      "suit": "wands",
+      "rank": "ace",
+      "name": "Ace of Wands",
+      "zh_name": "权杖一",
+      "path": "minor/wands/wands_01_ace.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_01_ace/card.png"
+    },
+    {
+      "card_id": "wands_02_two",
+      "asset_key": "wands_02_two",
+      "suit": "wands",
+      "rank": "two",
+      "name": "Two of Wands",
+      "zh_name": "权杖二",
+      "path": "minor/wands/wands_02_two.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_02_two/card.png"
+    },
+    {
+      "card_id": "wands_03_three",
+      "asset_key": "wands_03_three",
+      "suit": "wands",
+      "rank": "three",
+      "name": "Three of Wands",
+      "zh_name": "权杖三",
+      "path": "minor/wands/wands_03_three.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_03_three/card.png"
+    },
+    {
+      "card_id": "wands_04_four",
+      "asset_key": "wands_04_four",
+      "suit": "wands",
+      "rank": "four",
+      "name": "Four of Wands",
+      "zh_name": "权杖四",
+      "path": "minor/wands/wands_04_four.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_04_four/card.png"
+    },
+    {
+      "card_id": "wands_05_five",
+      "asset_key": "wands_05_five",
+      "suit": "wands",
+      "rank": "five",
+      "name": "Five of Wands",
+      "zh_name": "权杖五",
+      "path": "minor/wands/wands_05_five.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_05_five/card.png"
+    },
+    {
+      "card_id": "wands_06_six",
+      "asset_key": "wands_06_six",
+      "suit": "wands",
+      "rank": "six",
+      "name": "Six of Wands",
+      "zh_name": "权杖六",
+      "path": "minor/wands/wands_06_six.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_06_six/card.png"
+    },
+    {
+      "card_id": "wands_07_seven",
+      "asset_key": "wands_07_seven",
+      "suit": "wands",
+      "rank": "seven",
+      "name": "Seven of Wands",
+      "zh_name": "权杖七",
+      "path": "minor/wands/wands_07_seven.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_07_seven/card.png"
+    },
+    {
+      "card_id": "wands_08_eight",
+      "asset_key": "wands_08_eight",
+      "suit": "wands",
+      "rank": "eight",
+      "name": "Eight of Wands",
+      "zh_name": "权杖八",
+      "path": "minor/wands/wands_08_eight.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_08_eight/card.png"
+    },
+    {
+      "card_id": "wands_09_nine",
+      "asset_key": "wands_09_nine",
+      "suit": "wands",
+      "rank": "nine",
+      "name": "Nine of Wands",
+      "zh_name": "权杖九",
+      "path": "minor/wands/wands_09_nine.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_09_nine/card.png"
+    },
+    {
+      "card_id": "wands_10_ten",
+      "asset_key": "wands_10_ten",
+      "suit": "wands",
+      "rank": "ten",
+      "name": "Ten of Wands",
+      "zh_name": "权杖十",
+      "path": "minor/wands/wands_10_ten.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_10_ten/card.png"
+    },
+    {
+      "card_id": "wands_page",
+      "asset_key": "wands_page",
+      "suit": "wands",
+      "rank": "page",
+      "name": "Page of Wands",
+      "zh_name": "权杖侍从",
+      "path": "minor/wands/wands_page.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_page/card.png"
+    },
+    {
+      "card_id": "wands_knight",
+      "asset_key": "wands_knight",
+      "suit": "wands",
+      "rank": "knight",
+      "name": "Knight of Wands",
+      "zh_name": "权杖骑士",
+      "path": "minor/wands/wands_knight.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_knight/card.png"
+    },
+    {
+      "card_id": "wands_queen",
+      "asset_key": "wands_queen",
+      "suit": "wands",
+      "rank": "queen",
+      "name": "Queen of Wands",
+      "zh_name": "权杖王后",
+      "path": "minor/wands/wands_queen.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_queen/card.png"
+    },
+    {
+      "card_id": "wands_king",
+      "asset_key": "wands_king",
+      "suit": "wands",
+      "rank": "king",
+      "name": "King of Wands",
+      "zh_name": "权杖国王",
+      "path": "minor/wands/wands_king.png",
+      "candidate_source": "candidates/minor_batch_wands/wands_king/card.png"
     }
   ],
   "next_generation_template": "major_arcana_generation_template.md"
