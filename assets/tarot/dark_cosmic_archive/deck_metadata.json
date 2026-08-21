@@ -29,6 +29,46 @@
       "candidate_source": "candidates/01_the_magician/01_the_magician_v1.png"
     },
     {
+      "card_id": "major-02",
+      "number": "II",
+      "name": "The High Priestess",
+      "zh_name": "女祭司",
+      "path": "major/02_high_priestess.png",
+      "candidate_source": "candidates/batch_01/02_high_priestess/02_high_priestess_v1.png"
+    },
+    {
+      "card_id": "major-03",
+      "number": "III",
+      "name": "The Empress",
+      "zh_name": "皇后",
+      "path": "major/03_empress.png",
+      "candidate_source": "candidates/batch_01/03_empress/03_empress_v1.png"
+    },
+    {
+      "card_id": "major-04",
+      "number": "IV",
+      "name": "The Emperor",
+      "zh_name": "皇帝",
+      "path": "major/04_emperor.png",
+      "candidate_source": "candidates/batch_01/04_emperor/04_emperor_v1.png"
+    },
+    {
+      "card_id": "major-05",
+      "number": "V",
+      "name": "The Hierophant",
+      "zh_name": "教皇",
+      "path": "major/05_hierophant.png",
+      "candidate_source": "candidates/batch_01/05_hierophant/05_hierophant_v1.png"
+    },
+    {
+      "card_id": "major-06",
+      "number": "VI",
+      "name": "The Lovers",
+      "zh_name": "恋人",
+      "path": "major/06_lovers.png",
+      "candidate_source": "candidates/batch_01/06_lovers/06_lovers_v1.png"
+    },
+    {
       "card_id": "major-13",
       "number": "XIII",
       "name": "Death",

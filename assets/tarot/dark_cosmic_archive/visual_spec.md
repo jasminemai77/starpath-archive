@@ -31,6 +31,24 @@ cyberpunk, anime, generic game UI, or a busy fantasy poster.
 | Fixed whitespace | Preserve the top numeral zone and a consistent bottom title zone; do not crowd the border |
 | Main composition | One clear symbolic subject, a calm readable silhouette, and controlled celestial depth |
 
+### Long Title Typography Rule
+
+All English card titles use the same uppercase serif family, centered placement,
+and fixed visual hierarchy. For titles wider than the standard title zone (for
+example, **THE HIGH PRIESTESS**), reduce type size before changing letter
+spacing; retain the deck-wide tracking value and preserve the fixed bottom
+whitespace. Never wrap an English card title, compress it horizontally, or
+allow it to collide with the border or Chinese title.
+
+### Border Decoration Variation Rule
+
+The antique-gold double border is fixed across the deck. Individual cards may
+vary their sparse star-map, orbit, and constellation motifs to reflect their
+symbolism, but the variation must remain subordinate to the border: retain
+clear corners, preserve the approximately 10–15% reduced decoration density,
+and avoid adding ornamental clusters on every side. The result should read as
+one archival card system rather than five identical frames or unrelated frames.
+
 ## The Star — visual master
 
 The approved **XVII — THE STAR / 星星** card is the visual master for the
@@ -83,6 +101,11 @@ consistency baseline:
 | --- | --- |
 | 0 — The Fool / 愚人 | `major/00_the_fool.png` |
 | I — The Magician / 魔术师 | `major/01_the_magician.png` |
+| II — The High Priestess / 女祭司 | `major/02_high_priestess.png` |
+| III — The Empress / 皇后 | `major/03_empress.png` |
+| IV — The Emperor / 皇帝 | `major/04_emperor.png` |
+| V — The Hierophant / 教皇 | `major/05_hierophant.png` |
+| VI — The Lovers / 恋人 | `major/06_lovers.png` |
 | XIII — Death / 死神 | `major/13_death.png` |
 | XVII — The Star / 星星 | `major/17_the_star.png` |
 | XVIII — The Moon / 月亮 | `major/18_the_moon.png` |
