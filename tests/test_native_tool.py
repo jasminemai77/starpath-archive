@@ -63,6 +63,7 @@ def test_plugin_loads_and_registers_native_tool(monkeypatch: pytest.MonkeyPatch)
 
     assert main.StarpathArchivePlugin
     assert registry["generate_starpath_record"].__name__ == "generate_starpath_record"
+    assert registry["generate_starpath_spread"].__name__ == "generate_starpath_spread"
 
 
 @pytest.mark.asyncio
@@ -80,6 +81,26 @@ async def test_native_tool_delegates_to_adapter(monkeypatch: pytest.MonkeyPatch)
     plugin._adapter = Adapter()
     assert json.loads(await plugin.generate_starpath_record("event")) == {
         "record_id": "starpath-test"
+    }
+
+
+@pytest.mark.asyncio
+async def test_native_v2_tool_delegates_to_its_separate_adapter(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _install_astrbot_stubs(monkeypatch)
+    main = importlib.import_module("starpath_plugin.main")
+
+    class Adapter:
+        async def generate(self, event, mode, spread):
+            assert event == "event"
+            assert (mode, spread) == ("daily", "three_card")
+            return json.dumps({"metadata": {"contract_version": "starpath.tool.v2"}})
+
+    plugin = object.__new__(main.StarpathArchivePlugin)
+    plugin._v2_adapter = Adapter()
+    assert json.loads(await plugin.generate_starpath_spread("event", spread="three_card")) == {
+        "metadata": {"contract_version": "starpath.tool.v2"}
     }
 
 

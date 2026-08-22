@@ -9,10 +9,16 @@ from astrbot.api import AstrBotConfig, llm_tool, logger
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star, register
 
-from .adapter import StarpathToolAdapter
+from .adapter import StarpathToolAdapter, StarpathToolV2Adapter
 from .adapter.astrbot_final_decoration import AstrBotFinalDecoration
 from .adapter.astrbot_platform import AstrBotAdapter
-from .core import QuoteEngine, StarEngine, StarpathService, TarotEngine
+from .core import (
+    QuoteEngine,
+    StarEngine,
+    StarpathService,
+    StarpathToolV2Producer,
+    TarotEngine,
+)
 from .core.manifest.providers import JSONManifestProvider
 from .core.repository import load_quotes, load_stars, load_tarot_cards
 from .core.resolver import DefaultAssetResolver
@@ -34,6 +40,15 @@ def build_service() -> StarpathService:
         StarEngine(load_stars()),
         TarotEngine(load_tarot_cards()),
         QuoteEngine(load_quotes()),
+    )
+
+
+def build_v2_adapter() -> StarpathToolV2Adapter:
+    """Assemble the optional v2 Tool capability without changing the v1 Tool."""
+    return StarpathToolV2Adapter(
+        StarEngine(load_stars()),
+        QuoteEngine(load_quotes()),
+        StarpathToolV2Producer(TarotEngine(load_tarot_cards())),
     )
 
 
@@ -70,6 +85,7 @@ class StarpathArchivePlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig | dict | None = None) -> None:
         super().__init__(context)
         self._adapter = StarpathToolAdapter(build_service())
+        self._v2_adapter = build_v2_adapter()
         config_mapping = config if isinstance(config, Mapping) else None
         v1_parser = StarpathToolResultParser()
         self._capture_hook = StarpathExperienceCaptureHook.from_tool_result(
@@ -100,6 +116,25 @@ class StarpathArchivePlugin(Star):
             not predictions, facts about a person's future, or life advice.
         """
         return await self._adapter.generate(event, mode, spread)
+
+    @llm_tool(name="generate_starpath_spread")
+    async def generate_starpath_spread(
+        self,
+        event: AstrMessageEvent,
+        mode: str = "daily",
+        spread: str = "single",
+    ) -> str:
+        """Generate v2 Tarot spread data selected explicitly by the Native Agent.
+
+        Args:
+            mode(string): Must be `daily`.
+            spread(string): Choose `single` or `three_card`.
+
+        Returns:
+            ``starpath.tool.v2`` JSON with one or three complete Tarot draws.
+            It contains cultural symbolism only and never sends a message.
+        """
+        return await self._v2_adapter.generate(event, mode, spread)
 
     @filter.on_llm_tool_respond()
     async def capture_starpath_tool_result(

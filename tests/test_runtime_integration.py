@@ -77,3 +77,20 @@ async def test_astrbot_runtime_simulation_returns_the_tool_contract(
         "metadata",
     }
     assert payload["metadata"]["content_scope"] == "symbolic_entertainment"
+
+
+@pytest.mark.asyncio
+async def test_astrbot_runtime_simulation_exposes_the_v2_spread_tool(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _install_astrbot_stubs(monkeypatch)
+    main = importlib.import_module("starpath_plugin.main")
+    plugin = main.StarpathArchivePlugin(context=object())
+
+    payload = json.loads(
+        await plugin.generate_starpath_spread(SimulatedEvent(), spread="three_card")
+    )
+
+    assert payload["metadata"]["contract_version"] == "starpath.tool.v2"
+    assert payload["tarot"]["spread"] == "three_card"
+    assert len(payload["tarot"]["cards"]) == 3

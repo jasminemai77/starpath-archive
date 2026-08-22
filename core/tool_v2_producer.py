@@ -60,6 +60,7 @@ class StarpathToolV2Producer:
         quote: Quote,
         spread: str,
         mode: str = "daily",
+        generated_at: datetime | None = None,
     ) -> dict[str, object]:
         """Build and validate an independent v2 result without delivery work."""
         if mode != "daily":
@@ -73,10 +74,10 @@ class StarpathToolV2Producer:
             raise V2ToolProducerError("quote must be a Quote domain value")
 
         draws = tuple(self._draw() for _ in positions)
-        generated_at = self._now().astimezone(timezone.utc)
+        generated_at_utc = (generated_at or self._now()).astimezone(timezone.utc)
         payload: dict[str, object] = {
             "record_id": self._record_id(),
-            "generated_at": generated_at.isoformat().replace("+00:00", "Z"),
+            "generated_at": generated_at_utc.isoformat().replace("+00:00", "Z"),
             "mode": mode,
             "star": asdict(star),
             "tarot": {
