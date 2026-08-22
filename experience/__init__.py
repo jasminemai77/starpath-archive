@@ -8,6 +8,16 @@ from .presentation import (
     PresentationResult,
     TextPresentation,
 )
+from .presentation_consumer import (
+    InvalidPresentationResultError,
+    PlatformPresentation,
+    PresentationConsumer,
+    PresentationConversionError,
+    ResourceElement,
+    StructuredPresentationConsumer,
+    TextElement,
+    UnsupportedPresentationSectionError,
+)
 from .record import StarpathExperience
 from .record_adapter import (
     InvalidStarpathRecordError,
@@ -34,16 +44,24 @@ __all__ = [
     "ExperienceTextSection",
     "FortuneContext",
     "InvalidStarpathRecordError",
+    "InvalidPresentationResultError",
     "ImagePresentation",
     "MissingDeckContextError",
     "MissingTarotCardError",
     "PresentationInputError",
+    "PlatformPresentation",
+    "PresentationConsumer",
+    "PresentationConversionError",
     "PresentationResult",
     "StarpathExperience",
     "StarpathRecordExperienceAdapter",
+    "StructuredPresentationConsumer",
     "TarotCardSelection",
     "TarotExperienceApplication",
     "TarotExperienceInput",
     "TarotExperienceOrchestrator",
     "TextPresentation",
+    "TextElement",
+    "ResourceElement",
+    "UnsupportedPresentationSectionError",
 ]
