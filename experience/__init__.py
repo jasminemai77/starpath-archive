@@ -1,6 +1,12 @@
 """Structured experience composition for Native Agent tool results."""
 
 from .record import StarpathExperience
+from .record_adapter import (
+    InvalidStarpathRecordError,
+    MissingDeckContextError,
+    MissingTarotCardError,
+    StarpathRecordExperienceAdapter,
+)
 from .tarot import (
     ExperienceBuildError,
     ExperienceInputError,
@@ -18,7 +24,11 @@ __all__ = [
     "ExperienceResult",
     "ExperienceTextSection",
     "FortuneContext",
+    "InvalidStarpathRecordError",
+    "MissingDeckContextError",
+    "MissingTarotCardError",
     "StarpathExperience",
+    "StarpathRecordExperienceAdapter",
     "TarotCardSelection",
     "TarotExperienceInput",
     "TarotExperienceOrchestrator",
