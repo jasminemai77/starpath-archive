@@ -88,7 +88,7 @@ def test_unknown_card_and_deck_keep_existing_resolver_errors() -> None:
         orchestrator.build(build_input(deck_id="missing_deck"))
 
 
-def test_mvp_validates_single_spread_while_model_retains_multiple_card_shape() -> None:
+def test_orchestrator_rejects_an_incomplete_three_card_shape() -> None:
     multi_card = TarotExperienceInput(
         deck_id="a_visual_deck",
         spread="three_card",

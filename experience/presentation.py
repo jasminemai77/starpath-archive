@@ -57,16 +57,50 @@ class ExperiencePresentationBuilder:
         title = TextPresentation(
             section_id="title", title="Title", content=experience_result.title
         )
-        images = tuple(
-            ImagePresentation(resource=resource)
-            for resource in experience_result.display_resources
-        )
         text_sections = tuple(
             TextPresentation.from_experience_section(section)
             for section in experience_result.text_sections
         )
+        if experience_result.spread == "three_card":
+            sections = self._three_card_sections(experience_result, title, text_sections)
+        else:
+            images = tuple(
+                ImagePresentation(resource=resource)
+                for resource in experience_result.display_resources
+            )
+            sections = (title, *images, *text_sections)
         return PresentationResult(
             title=experience_result.title,
             mode=mode,
-            sections=(title, *images, *text_sections),
+            sections=sections,
         )
+
+    @staticmethod
+    def _three_card_sections(
+        experience_result: ExperienceResult,
+        title: TextPresentation,
+        text_sections: tuple[TextPresentation, ...],
+    ) -> tuple[PresentationSection, ...]:
+        """Keep a card's resource adjacent to its ordered position section."""
+        resources_by_card_id = {
+            resource.metadata.get("card_id"): resource
+            for resource in experience_result.display_resources
+        }
+        text_by_id = {section.section_id: section for section in text_sections}
+        sections: list[PresentationSection] = [title]
+        consumed_text_ids: set[str] = set()
+
+        for selection in experience_result.cards:
+            resource = resources_by_card_id.get(selection.card_id)
+            if resource is not None:
+                sections.append(ImagePresentation(resource=resource))
+            section_id = f"tarot_{selection.position.value}"
+            text_section = text_by_id.get(section_id)
+            if text_section is not None:
+                sections.append(text_section)
+                consumed_text_ids.add(section_id)
+
+        sections.extend(
+            section for section in text_sections if section.section_id not in consumed_text_ids
+        )
+        return tuple(sections)

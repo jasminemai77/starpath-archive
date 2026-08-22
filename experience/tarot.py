@@ -1,16 +1,16 @@
-"""Platform-neutral orchestration for one resolved Tarot experience."""
+"""Platform-neutral orchestration for resolved single- and three-card Tarot experiences."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
 
-from ..core.resolver import AssetResolver
+from ..core.resolver import AssetNotFoundError, AssetResolver
 from .asset_consumer import AssetReferenceConsumer, DisplayResource
 
 
 class ExperienceInputError(ValueError):
-    """Raised when an experience request cannot describe the MVP single-card flow."""
+    """Raised when an experience request cannot describe a supported Tarot flow."""
 
 
 class ExperienceBuildError(RuntimeError):
@@ -40,6 +40,8 @@ class TarotCardSelection:
     card_id: str
     position: CardPosition | str
     order: int = 0
+    card_name: str | None = None
+    meaning: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if not isinstance(self.card_id, str) or not self.card_id:
@@ -52,6 +54,16 @@ class TarotCardSelection:
             ) from error
         if not isinstance(self.order, int) or isinstance(self.order, bool) or self.order < 0:
             raise ExperienceInputError("A Tarot card selection requires a non-negative order")
+        if self.card_name is not None and (
+            not isinstance(self.card_name, str) or not self.card_name.strip()
+        ):
+            raise ExperienceInputError(
+                "A Tarot card selection name must be non-empty when provided"
+            )
+        if not isinstance(self.meaning, tuple) or not all(
+            isinstance(item, str) and item.strip() for item in self.meaning
+        ):
+            raise ExperienceInputError("A Tarot card selection meaning must be a tuple of text")
         object.__setattr__(self, "position", position)
 
 
@@ -59,8 +71,8 @@ class TarotCardSelection:
 class TarotSpread:
     """A validated ordered domain shape for a selected set of Tarot cards.
 
-    It introduces single- and three-card semantics without changing the current
-    ``TarotExperienceInput`` or activating multi-card runtime resolution.
+    It defines the supported single- and three-card Experience shapes without
+    introducing any Tool, platform, or delivery behavior.
     """
 
     spread_type: SpreadType | str
@@ -100,6 +112,10 @@ class TarotSpread:
             raise ExperienceInputError(
                 f"{spread_type.value} spread requires positions "
                 f"{[position.value for position in expected_positions]} in order"
+            )
+        if tuple(card.order for card in cards) != tuple(range(len(expected_positions))):
+            raise ExperienceInputError(
+                f"{spread_type.value} spread requires consecutive order values from zero"
             )
 
 
@@ -152,7 +168,7 @@ class ExperienceResult:
 
 
 class TarotExperienceOrchestrator:
-    """Resolve a domain-selected card into a display-ready, platform-neutral result."""
+    """Resolve supported logical spreads into platform-neutral experience data."""
 
     def __init__(
         self,
@@ -163,26 +179,57 @@ class TarotExperienceOrchestrator:
         self._consumer = consumer
 
     def build(self, experience_input: TarotExperienceInput) -> ExperienceResult:
-        """Build the MVP single-card experience without performing delivery work."""
-        self._validate_single_card(experience_input)
-        selection = experience_input.cards[0]
+        """Build single or three-card experience data without delivery work."""
+        spread = TarotSpread(experience_input.spread, experience_input.cards)
+        if spread.spread_type is SpreadType.SINGLE:
+            return self._build_single_card(experience_input, spread.cards)
+        if spread.spread_type is SpreadType.THREE_CARD:
+            return self._build_three_card(experience_input, spread.cards)
+        raise ExperienceInputError(f"Unsupported Tarot experience spread: {spread.spread_type}")
+
+    def _build_single_card(
+        self,
+        experience_input: TarotExperienceInput,
+        cards: tuple[TarotCardSelection, ...],
+    ) -> ExperienceResult:
+        """Preserve the established one-card resource/error behavior."""
+        selection = cards[0]
         reference = self._resolver.resolve(experience_input.deck_id, selection.card_id)
         resource = self._consumer.consume(reference)
         return ExperienceResult(
             title="Tarot experience",
-            spread=experience_input.spread,
-            cards=experience_input.cards,
+            spread=SpreadType.SINGLE.value,
+            cards=cards,
             display_resources=(resource,),
             text_sections=self._text_sections(experience_input),
             fortune_context=experience_input.fortune_context,
         )
 
-    @staticmethod
-    def _validate_single_card(experience_input: TarotExperienceInput) -> None:
-        if experience_input.spread != "single" or len(experience_input.cards) != 1:
-            raise ExperienceInputError(
-                "The Tarot experience MVP currently supports exactly one single-spread card"
-            )
+    def _build_three_card(
+        self,
+        experience_input: TarotExperienceInput,
+        cards: tuple[TarotCardSelection, ...],
+    ) -> ExperienceResult:
+        """Resolve each card in past/present/future order, degrading per missing asset."""
+        resources: list[DisplayResource] = []
+        for selection in cards:
+            try:
+                reference = self._resolver.resolve(experience_input.deck_id, selection.card_id)
+                resources.append(self._consumer.consume(reference))
+            except AssetNotFoundError:
+                # The ordered textual experience remains useful when one card
+                # visual is unavailable. Deck lookup and consumer errors are
+                # deliberately not hidden by this per-card degradation.
+                continue
+
+        return ExperienceResult(
+            title="Three-card Tarot experience",
+            spread=SpreadType.THREE_CARD.value,
+            cards=cards,
+            display_resources=tuple(resources),
+            text_sections=self._three_card_text_sections(experience_input, cards),
+            fortune_context=experience_input.fortune_context,
+        )
 
     @staticmethod
     def _text_sections(
@@ -205,3 +252,38 @@ class TarotExperienceOrchestrator:
                 )
             )
         return tuple(sections)
+
+    @staticmethod
+    def _three_card_text_sections(
+        experience_input: TarotExperienceInput,
+        cards: tuple[TarotCardSelection, ...],
+    ) -> tuple[ExperienceTextSection, ...]:
+        titles = {
+            CardPosition.PAST: "Past",
+            CardPosition.PRESENT: "Present",
+            CardPosition.FUTURE: "Future",
+        }
+        sections = [
+            ExperienceTextSection(
+                section_id=f"tarot_{selection.position.value}",
+                title=titles[selection.position],
+                content=TarotExperienceOrchestrator._card_content(selection),
+            )
+            for selection in cards
+        ]
+        if experience_input.fortune_context is not None:
+            sections.append(
+                ExperienceTextSection(
+                    section_id="fortune_sign",
+                    title="Fortune sign",
+                    content=experience_input.fortune_context.text,
+                )
+            )
+        return tuple(sections)
+
+    @staticmethod
+    def _card_content(selection: TarotCardSelection) -> str:
+        card_name = selection.card_name or selection.card_id
+        if selection.meaning:
+            return f"{card_name}: {' '.join(selection.meaning)}"
+        return f"{card_name}: No source-backed meaning is available in this input."
