@@ -1,8 +1,8 @@
-"""Validation models for the proposed, not-yet-produced ``starpath.tool.v2``.
+"""Validation models for the future ``starpath.tool.v2`` contract.
 
 This module is intentionally isolated from the current Native Tool, runtime,
-and experience pipeline.  It freezes the proposed JSON boundary so future tool
-production can be implemented behind a new explicit contract version.
+and experience pipeline.  It validates producer and consumer payloads behind
+an explicit contract version without activating a new Native Tool.
 """
 
 from __future__ import annotations
@@ -86,7 +86,7 @@ class FutureStarpathToolResult:
 
 
 class FutureStarpathToolV2Parser:
-    """Parse the design-time v2 schema without activating it in production.
+    """Parse v2 schema payloads without activating a new Native Tool.
 
     Unknown fields are deliberately accepted so additive future fields do not
     invalidate a compatible client.  Required fields and the v2 card-position
