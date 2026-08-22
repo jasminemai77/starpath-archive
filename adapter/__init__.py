@@ -10,4 +10,6 @@ __all__ = [
     "QQForwardPayload",
     "StarpathToolAdapter",
     "StarpathToolV2Adapter",
+    "AstrBotForwardRuntimeAdapter",
 ]
+from .astrbot_forward_runtime import AstrBotForwardRuntimeAdapter

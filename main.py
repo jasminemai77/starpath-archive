@@ -11,7 +11,6 @@ from astrbot.api.star import Context, Star, register
 
 from .adapter import StarpathToolAdapter, StarpathToolV2Adapter
 from .adapter.astrbot_final_decoration import AstrBotFinalDecoration
-from .adapter.astrbot_platform import AstrBotAdapter
 from .core import (
     QuoteEngine,
     StarEngine,
@@ -27,7 +26,6 @@ from .experience.asset_consumer import DefaultAssetReferenceConsumer
 from .experience.deck_provider import PackageDeckProvider
 from .experience.post_tool_capture import StarpathExperienceCaptureHook
 from .experience.presentation import ExperiencePresentationBuilder
-from .experience.presentation_consumer import StructuredPresentationConsumer
 from .experience.record_adapter import StarpathRecordExperienceAdapter
 from .experience.tarot import TarotExperienceOrchestrator
 from .experience.tool_contract_dispatcher import StarpathToolContractDispatcher
@@ -65,11 +63,7 @@ def build_experience_application() -> TarotExperienceApplication:
 
 def build_final_decoration() -> AstrBotFinalDecoration:
     """Assemble the append-only AstrBot final decoration boundary."""
-    return AstrBotFinalDecoration(
-        StructuredPresentationConsumer(),
-        AstrBotAdapter(),
-        Path(__file__).parent / "assets" / "tarot",
-    )
+    return AstrBotFinalDecoration(Path(__file__).parent / "assets" / "tarot")
 
 
 @register(
