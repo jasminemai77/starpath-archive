@@ -27,6 +27,11 @@ def _install_astrbot_stubs(monkeypatch: pytest.MonkeyPatch) -> dict[str, object]
     def register(*_args, **_kwargs):
         return lambda cls: cls
 
+    class Filter:
+        @staticmethod
+        def on_llm_tool_respond():
+            return lambda function: function
+
     class FrameworkStar:
         def __init__(self, context):
             self.context = context
@@ -34,6 +39,7 @@ def _install_astrbot_stubs(monkeypatch: pytest.MonkeyPatch) -> dict[str, object]
     api.AstrBotConfig = dict
     api.llm_tool = llm_tool
     event.AstrMessageEvent = object
+    event.filter = Filter
     star.Context = object
     star.Star = FrameworkStar
     star.register = register
