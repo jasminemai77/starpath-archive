@@ -1,5 +1,6 @@
 """Structured experience composition for Native Agent tool results."""
 
+from .application import TarotExperienceApplication
 from .record import StarpathExperience
 from .record_adapter import (
     InvalidStarpathRecordError,
@@ -30,6 +31,7 @@ __all__ = [
     "StarpathExperience",
     "StarpathRecordExperienceAdapter",
     "TarotCardSelection",
+    "TarotExperienceApplication",
     "TarotExperienceInput",
     "TarotExperienceOrchestrator",
 ]
