@@ -24,6 +24,7 @@ from .experience.presentation import ExperiencePresentationBuilder
 from .experience.presentation_consumer import StructuredPresentationConsumer
 from .experience.record_adapter import StarpathRecordExperienceAdapter
 from .experience.tarot import TarotExperienceOrchestrator
+from .experience.tool_contract_dispatcher import StarpathToolContractDispatcher
 from .experience.tool_result_parser import StarpathToolResultParser, ToolResultExtractor
 
 
@@ -70,12 +71,14 @@ class StarpathArchivePlugin(Star):
         super().__init__(context)
         self._adapter = StarpathToolAdapter(build_service())
         config_mapping = config if isinstance(config, Mapping) else None
+        v1_parser = StarpathToolResultParser()
         self._capture_hook = StarpathExperienceCaptureHook.from_tool_result(
             ToolResultExtractor(),
-            StarpathToolResultParser(),
+            v1_parser,
             build_experience_application(),
             ExperiencePresentationBuilder(),
             PackageDeckProvider(Path(__file__).parent / "assets" / "tarot", config_mapping),
+            StarpathToolContractDispatcher(v1_parser),
         )
         self._final_decoration = build_final_decoration()
 

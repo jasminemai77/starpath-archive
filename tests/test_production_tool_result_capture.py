@@ -58,9 +58,14 @@ class Tool:
 class Application:
     def __init__(self) -> None:
         self.calls: list[tuple[object, str, str]] = []
+        self.input_calls: list[object] = []
 
     def build(self, record: object, *, deck_id: str, spread: str) -> str:
         self.calls.append((record, deck_id, spread))
+        return "experience"
+
+    def build_input(self, experience_input: object) -> str:
+        self.input_calls.append(experience_input)
         return "experience"
 
 
@@ -100,6 +105,27 @@ def tool_payload() -> dict[str, object]:
         },
         "quote": {"id": "q1", "text": "Look upward.", "theme": "exploration"},
         "metadata": {"contract_version": "starpath.tool.v1"},
+    }
+
+
+def v2_tool_payload() -> dict[str, object]:
+    card = tool_payload()["tarot"]
+    assert isinstance(card, dict)
+    return {
+        "record_id": "starpath-v2-capture-test",
+        "generated_at": "2026-08-22T00:00:00Z",
+        "mode": "daily",
+        "star": tool_payload()["star"],
+        "tarot": {
+            "spread": "three_card",
+            "cards": [
+                {**card, "id": "major-00", "position": "past", "order": 0},
+                {**card, "id": "major-01", "position": "present", "order": 1},
+                {**card, "id": "major-02", "position": "future", "order": 2},
+            ],
+        },
+        "quote": tool_payload()["quote"],
+        "metadata": {"contract_version": "starpath.tool.v2"},
     }
 
 
@@ -174,6 +200,31 @@ def test_capture_composes_extraction_parsing_and_event_extra_without_delivery() 
     assert event.extras[CAPTURE_STATUS_EXTRA_KEY] == "captured"
 
 
+def test_capture_dispatches_v2_to_the_multi_card_application_input() -> None:
+    event = Event()
+    application = Application()
+    hook = StarpathExperienceCaptureHook.from_tool_result(
+        ToolResultExtractor(),
+        StarpathToolResultParser(),
+        application,  # type: ignore[arg-type]
+        PresentationBuilder(),  # type: ignore[arg-type]
+        ConfigDeckProvider({"default_deck_id": "configured_deck"}),
+    )
+
+    asyncio.run(hook.capture(event, Tool(), {"spread": "single"}, tool_result(v2_tool_payload())))
+
+    assert application.calls == []
+    assert len(application.input_calls) == 1
+    experience_input = application.input_calls[0]
+    assert experience_input.spread == "three_card"
+    assert [card.position.value for card in experience_input.cards] == [
+        "past",
+        "present",
+        "future",
+    ]
+    assert event.extras[CAPTURE_STATUS_EXTRA_KEY] == "captured"
+
+
 def test_capture_failure_is_stored_and_never_raises_or_sends() -> None:
     event = Event()
     hook = StarpathExperienceCaptureHook.from_tool_result(
@@ -209,7 +260,12 @@ def test_capture_modules_have_no_message_or_image_delivery_calls() -> None:
     root = Path(__file__).resolve().parents[1]
     content = "\n".join(
         (root / "experience" / name).read_text(encoding="utf-8")
-        for name in ("tool_result_parser.py", "post_tool_capture.py", "deck_provider.py")
+        for name in (
+            "tool_result_parser.py",
+            "tool_contract_dispatcher.py",
+            "post_tool_capture.py",
+            "deck_provider.py",
+        )
     ).lower()
 
     for forbidden in ("event.send(", "messagechain", "image(", "on_decorating_result"):

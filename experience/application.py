@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ..models import StarpathRecord
 from .record_adapter import StarpathRecordExperienceAdapter
-from .tarot import ExperienceResult, TarotExperienceOrchestrator
+from .tarot import ExperienceResult, TarotExperienceInput, TarotExperienceOrchestrator
 
 
 class TarotExperienceApplication:
@@ -31,4 +31,8 @@ class TarotExperienceApplication:
             deck_id=deck_id,
             spread=spread,
         )
+        return self._orchestrator.build(experience_input)
+
+    def build_input(self, experience_input: TarotExperienceInput) -> ExperienceResult:
+        """Build already-adapted input, used by a future versioned Tool contract."""
         return self._orchestrator.build(experience_input)
