@@ -1,6 +1,12 @@
 """Structured experience composition for Native Agent tool results."""
 
 from .application import TarotExperienceApplication
+from .message_presentation import (
+    MessagePresentation,
+    MessagePresentationError,
+    MessageSection,
+    PresentationResultMessageConverter,
+)
 from .presentation import (
     ExperiencePresentationBuilder,
     ImagePresentation,
@@ -48,11 +54,15 @@ __all__ = [
     "ImagePresentation",
     "MissingDeckContextError",
     "MissingTarotCardError",
+    "MessagePresentation",
+    "MessagePresentationError",
+    "MessageSection",
     "PresentationInputError",
     "PlatformPresentation",
     "PresentationConsumer",
     "PresentationConversionError",
     "PresentationResult",
+    "PresentationResultMessageConverter",
     "StarpathExperience",
     "StarpathRecordExperienceAdapter",
     "StructuredPresentationConsumer",
