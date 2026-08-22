@@ -112,6 +112,7 @@ class StarpathArchivePlugin(Star):
             presentation = event.get_extra("starpath.experience.presentation")
             logger.info(
                 "Starpath capture: "
+                f"event_id={self._event_id(event)} "
                 f"tool={tool.name} "
                 f"capture_status={event.get_extra('starpath.experience.capture_status')} "
                 f"presentation_present={presentation is not None} "
@@ -131,6 +132,7 @@ class StarpathArchivePlugin(Star):
         )
         logger.info(
             "Starpath final decoration: "
+            f"event_id={self._event_id(event)} "
             f"decoration_status={decoration_status} "
             f"presentation_consumed={presentation_consumed} "
             f"result_chain={chain_types}"
@@ -153,3 +155,8 @@ class StarpathArchivePlugin(Star):
             if isinstance(path, str):
                 return path
         return None
+
+    @staticmethod
+    def _event_id(event: object) -> object:
+        message = getattr(event, "message_obj", None)
+        return getattr(message, "message_id", None)
