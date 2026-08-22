@@ -27,6 +27,10 @@ def _install_astrbot_stubs(monkeypatch: pytest.MonkeyPatch) -> None:
         def on_llm_tool_respond():
             return lambda function: function
 
+        @staticmethod
+        def on_decorating_result():
+            return lambda function: function
+
     class FrameworkStar:
         def __init__(self, context):
             self.context = context

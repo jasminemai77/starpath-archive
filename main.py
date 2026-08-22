@@ -10,6 +10,8 @@ from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star, register
 
 from .adapter import StarpathToolAdapter
+from .adapter.astrbot_final_decoration import AstrBotFinalDecoration
+from .adapter.astrbot_platform import AstrBotAdapter
 from .core import QuoteEngine, StarEngine, StarpathService, TarotEngine
 from .core.manifest.providers import JSONManifestProvider
 from .core.repository import load_quotes, load_stars, load_tarot_cards
@@ -19,6 +21,7 @@ from .experience.asset_consumer import DefaultAssetReferenceConsumer
 from .experience.deck_provider import PackageDeckProvider
 from .experience.post_tool_capture import StarpathExperienceCaptureHook
 from .experience.presentation import ExperiencePresentationBuilder
+from .experience.presentation_consumer import StructuredPresentationConsumer
 from .experience.record_adapter import StarpathRecordExperienceAdapter
 from .experience.tarot import TarotExperienceOrchestrator
 from .experience.tool_result_parser import StarpathToolResultParser, ToolResultExtractor
@@ -44,6 +47,15 @@ def build_experience_application() -> TarotExperienceApplication:
     return TarotExperienceApplication(StarpathRecordExperienceAdapter(), orchestrator)
 
 
+def build_final_decoration() -> AstrBotFinalDecoration:
+    """Assemble the append-only AstrBot final decoration boundary."""
+    return AstrBotFinalDecoration(
+        StructuredPresentationConsumer(),
+        AstrBotAdapter(),
+        Path(__file__).parent / "assets" / "tarot",
+    )
+
+
 @register(
     "starpath_plugin",
     "AstrBot Project",
@@ -65,6 +77,7 @@ class StarpathArchivePlugin(Star):
             ExperiencePresentationBuilder(),
             PackageDeckProvider(Path(__file__).parent / "assets" / "tarot", config_mapping),
         )
+        self._final_decoration = build_final_decoration()
 
     @llm_tool(name="generate_starpath_record")
     async def generate_starpath_record(
@@ -95,3 +108,8 @@ class StarpathArchivePlugin(Star):
     ) -> None:
         """Capture a resolved presentation in event extras; never alter delivery."""
         await self._capture_hook.capture(event, tool, tool_args, tool_result)
+
+    @filter.on_decorating_result()
+    async def decorate_starpath_final_result(self, event: AstrMessageEvent) -> None:
+        """Append one captured Tarot image to the Native Agent's final response chain."""
+        self._final_decoration.decorate(event)
