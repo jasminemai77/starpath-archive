@@ -32,14 +32,17 @@ from .record_adapter import (
     StarpathRecordExperienceAdapter,
 )
 from .tarot import (
+    CardPosition,
     ExperienceBuildError,
     ExperienceInputError,
     ExperienceResult,
     ExperienceTextSection,
     FortuneContext,
+    SpreadType,
     TarotCardSelection,
     TarotExperienceInput,
     TarotExperienceOrchestrator,
+    TarotSpread,
 )
 
 __all__ = [
@@ -49,6 +52,7 @@ __all__ = [
     "ExperienceResult",
     "ExperienceTextSection",
     "FortuneContext",
+    "CardPosition",
     "InvalidStarpathRecordError",
     "InvalidPresentationResultError",
     "ImagePresentation",
@@ -70,6 +74,8 @@ __all__ = [
     "TarotExperienceApplication",
     "TarotExperienceInput",
     "TarotExperienceOrchestrator",
+    "TarotSpread",
+    "SpreadType",
     "TextPresentation",
     "TextElement",
     "ResourceElement",
