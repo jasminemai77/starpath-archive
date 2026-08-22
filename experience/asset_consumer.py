@@ -66,3 +66,11 @@ class AssetReferenceConsumer(ABC):
     def consume(self, asset_reference: AssetReference) -> DisplayResource:
         """Return a display description or raise an explicit conversion error."""
         raise NotImplementedError
+
+
+class DefaultAssetReferenceConsumer(AssetReferenceConsumer):
+    """Default metadata-only consumer used by platform integration boundaries."""
+
+    def consume(self, asset_reference: AssetReference) -> DisplayResource:
+        """Convert a resolved reference without opening or delivering its file."""
+        return DisplayResource.from_asset_reference(asset_reference)

@@ -60,6 +60,10 @@ class AstrBotImagePayload:
 class AstrBotAdapter(PlatformAdapter):
     """Adapt generic display metadata to an AstrBot payload description only."""
 
+    def build_image_payload(self, resource: DisplayResource) -> AstrBotImagePayload:
+        """Build the AstrBot image intermediate payload without runtime delivery."""
+        return AstrBotImagePayload.from_display_resource(resource)
+
     def adapt(self, resource: DisplayResource) -> PlatformPayload:
         """Return transport-free payload metadata; runtime delivery stays out of scope."""
-        return AstrBotImagePayload.from_display_resource(resource).as_platform_payload()
+        return self.build_image_payload(resource).as_platform_payload()
