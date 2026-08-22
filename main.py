@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from pathlib import Path
 
-from astrbot.api import AstrBotConfig, llm_tool
+from astrbot.api import AstrBotConfig, llm_tool, logger
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star, register
 
@@ -108,8 +108,48 @@ class StarpathArchivePlugin(Star):
     ) -> None:
         """Capture a resolved presentation in event extras; never alter delivery."""
         await self._capture_hook.capture(event, tool, tool_args, tool_result)
+        if getattr(tool, "name", None) == "generate_starpath_record":
+            presentation = event.get_extra("starpath.experience.presentation")
+            logger.info(
+                "Starpath capture: "
+                f"tool={tool.name} "
+                f"capture_status={event.get_extra('starpath.experience.capture_status')} "
+                f"presentation_present={presentation is not None} "
+                f"card_id={self._presentation_card_id(presentation)} "
+                f"asset_path={self._presentation_asset_path(presentation)}"
+            )
 
     @filter.on_decorating_result()
     async def decorate_starpath_final_result(self, event: AstrMessageEvent) -> None:
         """Append one captured Tarot image to the Native Agent's final response chain."""
         self._final_decoration.decorate(event)
+        result = event.get_result()
+        chain_types = [type(component).__name__ for component in getattr(result, "chain", ())]
+        decoration_status = event.get_extra("starpath.experience.decoration_status")
+        presentation_consumed = event.get_extra(
+            "starpath.experience.presentation_consumed", False
+        )
+        logger.info(
+            "Starpath final decoration: "
+            f"decoration_status={decoration_status} "
+            f"presentation_consumed={presentation_consumed} "
+            f"result_chain={chain_types}"
+        )
+
+    @staticmethod
+    def _presentation_card_id(presentation: object) -> object:
+        for section in getattr(presentation, "sections", ()):
+            resource = getattr(section, "resource", None)
+            metadata = getattr(resource, "metadata", None)
+            if isinstance(metadata, dict):
+                return metadata.get("card_id")
+        return None
+
+    @staticmethod
+    def _presentation_asset_path(presentation: object) -> object:
+        for section in getattr(presentation, "sections", ()):
+            resource = getattr(section, "resource", None)
+            path = getattr(resource, "path", None)
+            if isinstance(path, str):
+                return path
+        return None

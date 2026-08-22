@@ -37,6 +37,7 @@ def _install_astrbot_stubs(monkeypatch: pytest.MonkeyPatch) -> None:
 
     api.AstrBotConfig = dict
     api.llm_tool = llm_tool
+    api.logger = types.SimpleNamespace(info=lambda _message: None)
     event.AstrMessageEvent = object
     event.filter = Filter
     star.Context = object
